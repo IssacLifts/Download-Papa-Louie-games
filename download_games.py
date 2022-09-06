@@ -1,4 +1,4 @@
-from os import cpu_count
+from os import cpu_count, system
 import concurrent.futures
 import numpy as np
 from requests import get, ConnectionError
@@ -6,6 +6,7 @@ from colorama import Fore, init
 from sys import exit
 from time import sleep
 
+system('cls')
 print(f"{Fore.LIGHTYELLOW_EX}{cpu_count() * 2} files can be downloaded at a time - Due to you having {cpu_count()} cpu cores...\nCores: {cpu_count()}\nThreads: {cpu_count() *2}\n")
 sleep(5)
 
