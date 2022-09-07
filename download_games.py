@@ -32,7 +32,7 @@ game_urls = np.array(["http://i.flipline.com/downloads/papasscooperia_102.zip",
 def download_games(url:str) -> bool:
     game_name = url.split("/")[-1]
     game_name = game_name.replace(".zip", "")
-    print(f"{Fore.LIGHTMAGENTA_EX}Downloading {url}...\n")
+    print(f"{Fore.LIGHTMAGENTA_EX}Downloading {game_name}...\n")
     try:
         download = get(url)
     except ConnectionError:
