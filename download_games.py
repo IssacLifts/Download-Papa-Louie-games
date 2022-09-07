@@ -36,7 +36,7 @@ def download_games(url:str) -> bool:
     try:
         download = get(url)
     except ConnectionError:
-        print(f"{Fore.LIGHTRED_EX}You are not connected to the internet...\n{Fore.LIGHTRED_EX}Exiting...")
+        print(f"{Fore.LIGHTRED_EX}A connection error occured{Fore.LIGHTRED_EX}Closing thread...\n")
         exit()
     try:  
         with open(f"{game_name}.zip", "wb") as file:
@@ -50,7 +50,8 @@ def download_games(url:str) -> bool:
     print(f"{Fore.LIGHTGREEN_EX}{download.status_code}! {Fore.RED}{game_name}{Fore.LIGHTGREEN_EX} has been downloaded!")
 
 
-with concurrent.futures.ThreadPoolExecutor() as executor:
-    executor.map(download_games, game_urls)
-    
-print(f"{Fore.LIGHTGREEN_EX}All files have been downloaded!")
+if __name__ == "__main__":
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(download_games, game_urls)
+        
+    print(f"{Fore.LIGHTGREEN_EX}All files have been downloaded!")
